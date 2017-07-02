@@ -23,7 +23,18 @@ class Banner
      */
     public function getBanner($id)
     {
-        
+        //独立验证
+        //验证器：封装性更好
+        $data = [
+            'name' => 'vendor',
+            'email' => 'asdf@qq.com'
+        ];
+        $validate = new Validate([
+            'name' => 'require|max:10',
+            'email'=> 'email'
+            ]);
+        $result = $validate->batch()->check($data);
+        var_dump($validate->getError());
     }
 
 
